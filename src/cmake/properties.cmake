@@ -15,8 +15,12 @@ if(${CMAKE_SIZEOF_VOID_P} EQUAL 8)
 	set(GGPO_64BIT true)
 endif()
 
-set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+add_compile_options(-O3)
+add_compile_options(-static)
+add_compile_options(-lws_32)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lws2_32")
 
 # Enable colored output
 if (CMAKE_GENERATOR STREQUAL "Ninja")

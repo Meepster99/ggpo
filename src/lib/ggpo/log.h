@@ -5,6 +5,8 @@
  * in the LICENSE file.
  */
 
+static_assert(sizeof(void*) == 4, "must compile in 32 bit");
+
 #ifndef _LOG_H
 #define _LOG_H
 

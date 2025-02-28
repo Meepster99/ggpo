@@ -1,4 +1,4 @@
- 
+
 :: run following in wsl
 :: cmake -G "Visual Studio 17 2022" -A Win32 -B build -DBUILD_SHARED_LIBS=off
 :: & "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -G "Visual Studio 17 2022" -A Win32 -B build -DBUILD_SHARED_LIBS=off
@@ -46,4 +46,17 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 END FOLLOWING
 
-edit flags.make to be CXX_FLAGS = -std=c++2a -O3 -m32 (REMOVE CXX_FLAGS = -std=gnu++98 /W4 /WX)
+edit flags.make to be CXX_FLAGS = -std=c++2a -O3 -m32 -static (REMOVE CXX_FLAGS = -std=gnu++98 /W4 /WX)
+
+in ggpo/build/gmakelists,, add -lws2_32 to CMAKE_CXX_STANDARD_LIBRARIES
+i think
+
+nono
+flags:
+CXX_FLAGS = -std=c++2a -O3 -m32 -static
+
+ggpo/build/cmakelists:
+CMAKE_CXX_STANDARD_LIBRARIES:STRING=-static -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lws2_32
+
+actually use cmake -DCMAKE_TOOLCHAIN_FILE=./mingw-w64-x86_64.cmake -B build -DBUILD_SHARED_LIBS=on
+

@@ -8,6 +8,9 @@
 #include "types.h"
 #include "udp.h"
 
+#include <winsock2.h>
+#include <ws2tcpip.h>
+
 SOCKET
 CreateSocket(uint16 bind_port, int retries)
 {
