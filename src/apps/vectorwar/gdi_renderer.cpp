@@ -184,7 +184,7 @@ GDIRenderer::DrawConnectState(HDC hdc, Ship &ship, PlayerConnectionInfo &info)
                   (LONG)(ship.position.y + PROGRESS_BAR_TOP_OFFSET + PROGRESS_BAR_HEIGHT) };
 
       FrameRect(hdc, &rc, (HBRUSH)GetStockObject(GRAY_BRUSH));
-      rc.right = rc.left + min(100, progress) * PROGRESS_BAR_WIDTH / 100;
+      rc.right = rc.left + std::min(100, progress) * PROGRESS_BAR_WIDTH / 100;
       InflateRect(&rc, -1, -1);
       FillRect(hdc, &rc, bar);
    }

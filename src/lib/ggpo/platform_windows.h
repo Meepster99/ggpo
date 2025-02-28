@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include "types.h"
 
+//#error windows
+
 class Platform {
 public:  // types
    typedef DWORD ProcessID;

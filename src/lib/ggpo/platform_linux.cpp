@@ -5,19 +5,26 @@
  * in the LICENSE file.
  */
 
-#include "platform_linux.h"
+ // look, yes, i did just copy and paste the windows ver. i tried ok?(obvious lie) and i stoped being able to care years ago
 
-struct timespec start = { 0 }
+ #include "platform_windows.h"
 
-uint32 Platform::GetCurrentTimeMS() {
-    if (start.tv_sec == 0 && start.tv_nsec == 0) {
-        clock_gettime(CLOCK_MONOTONIC, &start);
-        return 0
+ int
+ Platform::GetConfigInt(const char* name)
+ {
+    char buf[1024];
+    if (GetEnvironmentVariable(name, buf, ARRAY_SIZE(buf)) == 0) {
+       return 0;
     }
-    struct timespec current;
-    clock_gettime(CLOCK_MONOTONIC, &current);
-
-    return ((current.tv_sec - start.tv_sec) * 1000) +
-           ((current.tv_nsec  - start.tv_nsec ) / 1000000) +
-}
-
+    return atoi(buf);
+ }
+ 
+ bool Platform::GetConfigBool(const char* name)
+ {
+    char buf[1024];
+    if (GetEnvironmentVariable(name, buf, ARRAY_SIZE(buf)) == 0) {
+       return false;
+    }
+    return atoi(buf) != 0 || _stricmp(buf, "true") == 0;
+ }
+ 

@@ -10,6 +10,8 @@
 
 #include "static_buffer.h"
 
+#include <windows.h>
+
 #define MAX_POLLABLE_HANDLES     64
 
 

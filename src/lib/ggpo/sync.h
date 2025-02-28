@@ -5,6 +5,14 @@
  * in the LICENSE file.
  */
 
+#ifndef FALSE
+#define FALSE 0
+#endif
+
+#ifndef TRUE
+#define TRUE 1
+#endif
+
 #ifndef _SYNC_H
 #define _SYNC_H
 

@@ -13,9 +13,7 @@
 template<class T, int N> class StaticBuffer
 {
 public:
-   StaticBuffer<T, N>() :
-      _size(0) {
-   } 
+   StaticBuffer() : _size(0) {} 
 
    T& operator[](int i) {
       ASSERT(i >= 0 && i < _size);

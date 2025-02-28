@@ -5,6 +5,9 @@
 #endif
 #include "vectorwar.h"
 #include "ggpo_perfmon.h"
+#include <math.h>
+
+static_assert(sizeof(void*) == 4, "compile in 32 bit please");
 
 LRESULT CALLBACK
 MainWindowProc(HWND hwnd,
@@ -78,7 +81,7 @@ RunMainLoop(HWND hwnd)
          }
       }
       now = timeGetTime();
-      VectorWar_Idle(max(0, next - now - 1));
+      VectorWar_Idle(std::max(0, next - now - 1));
       if (now >= next) {
          VectorWar_RunFrame(hwnd);
          next = now + (1000 / 60);

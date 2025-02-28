@@ -5,23 +5,28 @@
  * in the LICENSE file.
  */
 
-#ifndef _GGPO_LINUX_H_
-#define _GGPO_LINUX_H_
-
-#include <stdio.h>
-#include <stdarg.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-class Platform {
-public:  // types
-   typedef pid_t ProcessID;
-
-public:  // functions
-   static ProcessID GetProcessID() { return getpid(); }
-   static void AssertFailed(char *msg) { }
-   static uint32 GetCurrentTimeMS();
-};
-
-#endif
+ #ifndef _GGPO_WINDOWS_H_
+ #define _GGPO_WINDOWS_H_
+ 
+ #include <winsock2.h>
+ #include <ws2tcpip.h>
+ #include <windows.h>
+ #include <stdio.h>
+ #include "types.h"
+ 
+ //#error windows
+ 
+ class Platform {
+ public:  // types
+    typedef DWORD ProcessID;
+ 
+ public:  // functions
+    static ProcessID GetProcessID() { return GetCurrentProcessId(); }
+    static void AssertFailed(char *msg) { MessageBoxA(NULL, msg, "GGPO Assertion Failed", MB_OK | MB_ICONEXCLAMATION); }
+    static uint32 GetCurrentTimeMS() { return timeGetTime(); }
+    static int GetConfigInt(const char* name);
+    static bool GetConfigBool(const char* name);
+ };
+ 
+ #endif
+ 
