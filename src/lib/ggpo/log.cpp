@@ -7,7 +7,7 @@
 
 #include "types.h"
 
-void ___log(const char* msg)
+void ___GGPOlog(const char* msg)
 {
 	const char* ipAddress = "127.0.0.1";
 	unsigned short port = 17474;
@@ -68,7 +68,7 @@ void Log(const char *fmt, ...)
 	va_start(args, fmt);
 	//vsnprintf(buffer+numBackTicks, 1024-numBackTicks, fmt, args); // why cant i use the safe version here?? only god knows
 	vsprintf_s(buffer+numBackTicks, 1024-numBackTicks, fmt, args); // why cant i use the safe version here?? only god knows)
-   ___log(buffer);
+   ___GGPOlog(buffer);
 	va_end(args);
 }
 
