@@ -89,7 +89,7 @@ SpectatorBackend::SyncInput(void *values,
 GGPOErrorCode
 SpectatorBackend::IncrementFrame(void)
 {  
-   Log("End of frame (%d)...\n", _next_input_to_send - 1);
+   Log("SpectatorBackend End of frame (%d)...\n", _next_input_to_send - 1);
    DoPoll(0);
    PollUdpProtocolEvents();
 

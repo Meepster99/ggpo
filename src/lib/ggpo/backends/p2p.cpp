@@ -329,7 +329,7 @@ Peer2PeerBackend::SyncInput(void *values,
 GGPOErrorCode
 Peer2PeerBackend::IncrementFrame(void)
 {  
-   Log("End of frame (%d)...\n", _sync.GetFrameCount());
+   Log("Peer2PeerBackend End of frame (%d)...\n", _sync.GetFrameCount());
    _sync.IncrementFrame();
    DoPoll(0);
    PollSyncEvents();
@@ -373,6 +373,7 @@ Peer2PeerBackend::OnUdpProtocolPeerEvent(UdpProtocol::Event &evt, int queue)
          if (!_local_connect_status[queue].disconnected) {
             int current_remote_frame = _local_connect_status[queue].last_frame;
             int new_remote_frame = evt.u.input.input.frame;
+            Log("curr %d new %d", current_remote_frame, new_remote_frame);
             ASSERT(current_remote_frame == -1 || new_remote_frame == (current_remote_frame + 1));
 
             _sync.AddRemoteInput(queue, evt.u.input.input);

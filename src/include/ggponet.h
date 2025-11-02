@@ -247,6 +247,10 @@ typedef struct {
     * structure above for more information.
     */
    bool (__cdecl *on_event)(GGPOEvent *info);
+
+
+   // my own thing. lets me hopefully check whats up with the buffers when they dont match
+   void (__cdecl *compare_buffers)(unsigned char* last, unsigned char* cur);
 } GGPOSessionCallbacks;
 
 /*

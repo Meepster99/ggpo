@@ -13,6 +13,10 @@
 #include "sync.h"
 #include "ring_buffer.h"
 
+void ___GGPOlogSync(const char* msg);
+
+void ggnetlog(const char* format, ...);
+
 class SyncTestBackend : public IQuarkBackend {
 public:
    SyncTestBackend(GGPOSessionCallbacks *cb, char *gamename, int frames, int num_players);
