@@ -60,3 +60,9 @@ CMAKE_CXX_STANDARD_LIBRARIES:STRING=-static -lkernel32 -luser32 -lgdi32 -lwinspo
 
 actually use cmake -DCMAKE_TOOLCHAIN_FILE=./mingw-w64-x86_64.cmake -B build -DBUILD_SHARED_LIBS=on
 
+I LIED
+cmake -DCMAKE_TOOLCHAIN_FILE=./mingw-w64-x86_64.cmake -B build -DBUILD_SHARED_LIBS=off
+cd build
+make 
+cp src/libGGPO.a ../../../lib/
+
