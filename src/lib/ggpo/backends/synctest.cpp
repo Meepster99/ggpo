@@ -206,6 +206,7 @@ SyncTestBackend::IncrementFrame(void)
             Log("Checksum for frame %d does not match saved (%08X != %08X)", frame, checksum, info.checksum);
             RaiseSyncError("Checksum for frame %d does not match saved (%08X != %08X)", frame, checksum, info.checksum);
 
+			// i dont think im passing in the right buffer here.
 			_callbacks.compare_buffers((unsigned char*)_sync.GetLastSavedFrame().buf, (unsigned char*)info.buf);
          }
 
